@@ -13,6 +13,7 @@
 		33E2535B287B22F100C52805 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33E2535A287B22F100C52805 /* Preview Assets.xcassets */; };
 		33E2535D287B22F100C52805 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E2535C287B22F100C52805 /* Persistence.swift */; };
 		33E25360287B22F100C52805 /* Unclutter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33E2535E287B22F100C52805 /* Unclutter.xcdatamodeld */; };
+		33E25367287B235D00C52805 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E25366287B235D00C52805 /* Dashboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		33E2535A287B22F100C52805 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		33E2535C287B22F100C52805 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		33E2535F287B22F100C52805 /* Unclutter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Unclutter.xcdatamodel; sourceTree = "<group>"; };
+		33E25366287B235D00C52805 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +57,7 @@
 		33E25352287B22EE00C52805 /* Unclutter */ = {
 			isa = PBXGroup;
 			children = (
-				33E25353287B22EE00C52805 /* UnclutterApp.swift */,
-				33E25355287B22EE00C52805 /* ContentView.swift */,
+				33E25368287B238500C52805 /* Views */,
 				33E25357287B22F100C52805 /* Assets.xcassets */,
 				33E2535C287B22F100C52805 /* Persistence.swift */,
 				33E2535E287B22F100C52805 /* Unclutter.xcdatamodeld */,
@@ -71,6 +72,16 @@
 				33E2535A287B22F100C52805 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		33E25368287B238500C52805 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				33E25353287B22EE00C52805 /* UnclutterApp.swift */,
+				33E25355287B22EE00C52805 /* ContentView.swift */,
+				33E25366287B235D00C52805 /* Dashboard.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +156,7 @@
 			files = (
 				33E25360287B22F100C52805 /* Unclutter.xcdatamodeld in Sources */,
 				33E2535D287B22F100C52805 /* Persistence.swift in Sources */,
+				33E25367287B235D00C52805 /* Dashboard.swift in Sources */,
 				33E25356287B22EE00C52805 /* ContentView.swift in Sources */,
 				33E25354287B22EE00C52805 /* UnclutterApp.swift in Sources */,
 			);
