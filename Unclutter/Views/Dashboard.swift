@@ -6,20 +6,44 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct Dashboard: View {
+    var colors: [Color] = [.cyan, .indigo, .purple, .mint, .blue]
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest<Category>(sortDescriptors: [.init(key: "createdAt", ascending: false)]) var categories
+    
+    @FetchRequest<Item>(sortDescriptors: [.init(key: "timestamp", ascending: true)]) var items
+    
+    
+    @State var addCategoryIsPresented = false
+    
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                totalLabel
-                amountLabel
-                buttons
-                Spacer()
-                addButton
-                Spacer()
+                ScrollView {
+                    addCategoryButton
+                    buttonsGrid
+                    Spacer()
+                }
+                HStack {
+                    addItemButton
+                        .padding()
+                    VStack {
+                        totalLabel
+                        amountLabel
+                    }
+                }
+                .padding(.bottom)
             }
-            .padding(.top, 20)
-            .padding(.horizontal, 50)
+//            .padding(.top, 20)
+            .padding(.horizontal, 20)
+            .sheet(isPresented: $addCategoryIsPresented, content: {
+                AddCategoryView()
+            })
             .navigationTitle("Unclutter")
         }
     }
@@ -40,32 +64,28 @@ struct Dashboard: View {
             .padding()
             .foregroundColor(.white)
         })
-        .frame(width: 120, height: 100)
+        .frame(width: 140, height: 90)
         .background {
             color
         }
     }
     
-    var buttons: some View {
-        VStack(spacing: 30) {
-            HStack {
-                categoryButton(label: "Sold:", counter: 1, color: .cyan)
-                Spacer()
-                categoryButton(label: "Given away:", counter: 2, color: .indigo)
+    var buttonsGrid: some View {
+        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20, content: {
+            ForEach(categories) { category in
+                categoryButton(
+                    label: category.name ?? "Default",
+                    counter: category.items?.count ?? 0,
+                    color: colors[(categories.firstIndex(of: category) ?? 0) % colors.count])
             }
-            HStack {
-                categoryButton(label: "Exchanged:", counter: 1, color: .mint)
-                Spacer()
-                categoryButton(label: "Thrown away:", counter: 2, color: .purple)
-            }
-        }
+        })
     }
     
     var totalLabel: some View {
         HStack {
             Text("Total items:")
             Spacer()
-            Text("6")
+            Text("\(items.count)")
         }
         .padding()
         .background {
@@ -78,7 +98,7 @@ struct Dashboard: View {
         HStack {
             Text("Earned:")
             Spacer()
-            Text("60")
+            Text(String(format: "%.2f", items.map(\.price).reduce(0, +)))
         }
         .padding()
         .background {
@@ -87,7 +107,16 @@ struct Dashboard: View {
         }
     }
     
-    var addButton: some View {
+    var addCategoryButton: some View {
+        HStack {
+            Spacer()
+            Button("Add category") {
+                addCategoryIsPresented = true
+            }
+        }
+    }
+    
+    var addItemButton: some View {
         Button(action: {}, label: {
             Text("+")
                 .font(.largeTitle)
@@ -96,7 +125,7 @@ struct Dashboard: View {
                 .background {
                     Circle()
                         .frame(width: 60, height: 60)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.mint)
                 }
         })
     }
