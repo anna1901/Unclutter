@@ -15,8 +15,6 @@ struct UnclutterApp: App {
         WindowGroup {
             Dashboard()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

@@ -19,35 +19,44 @@ struct Dashboard: View {
     
     
     @State var addCategoryIsPresented = false
+    @State var addItemIsPresented = false
     
     
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                ScrollView {
-                    addCategoryButton
-                    buttonsGrid
-                    Spacer()
-                }
-                HStack {
-                    addItemButton
-                        .padding()
-                    VStack {
-                        totalLabel
-                        amountLabel
-                    }
-                }
-                .padding(.bottom)
+                summaryArea
+                categoriesList
+                addItemButton
+                    .padding()
             }
 //            .padding(.top, 20)
             .padding(.horizontal, 20)
             .sheet(isPresented: $addCategoryIsPresented, content: {
                 AddCategoryView()
             })
+            .background() {
+                NavigationLink(isActive: $addItemIsPresented, destination: { AddItemView() }, label: {})
+            }
             .navigationTitle("Unclutter")
         }
     }
     
+    private var summaryArea: some View {
+        VStack {
+            totalLabel
+            amountLabel
+        }
+        .padding(.bottom)
+    }
+    
+    private var categoriesList: some View {
+        ScrollView {
+            addCategoryButton
+            buttonsGrid
+            Spacer()
+        }
+    }
     
     func categoryButton(label: String, counter: Int, color: Color) -> some View{
         Button(action: {
@@ -76,7 +85,7 @@ struct Dashboard: View {
                 categoryButton(
                     label: category.name ?? "Default",
                     counter: category.items?.count ?? 0,
-                    color: colors[(categories.firstIndex(of: category) ?? 0) % colors.count])
+                    color: !colors.isEmpty ? colors[(categories.firstIndex(of: category) ?? 0) % colors.count] : .mint)
             }
         })
     }
@@ -117,7 +126,9 @@ struct Dashboard: View {
     }
     
     var addItemButton: some View {
-        Button(action: {}, label: {
+        Button(action: {
+            addItemIsPresented = true
+        }, label: {
             Text("+")
                 .font(.largeTitle)
                 .fontWeight(.bold)
