@@ -65,7 +65,10 @@ struct AddItemView: View {
         }
         .padding()
         .navigationTitle("Add item")
-        .onAppear { showNewCategoryField = categories.isEmpty }
+        .onAppear {
+            showNewCategoryField = categories.isEmpty
+            category = categories.first?.name ?? ""
+        }
     }
     
     private func addItem() {

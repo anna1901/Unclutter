@@ -13,14 +13,26 @@ struct AddCategoryView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             TextField("Name", text: $name)
+                .padding()
+                .font(.headline)
+                .background(Color(hue: 0.519, saturation: 0.0, brightness: 0.932))
+                .cornerRadius(10)
             Button("Save") {
                 addItem()
                 presentationMode.wrappedValue.dismiss()
             }
+            .font(.headline)
+            .foregroundColor(.white)
+            .frame(height: 55)
+            .frame(maxWidth: .infinity)
+            .background(Color(hue: 0.893, saturation: 1.0, brightness: 0.712))
+            .cornerRadius(10)
+            Spacer()
         }
         .padding()
+        .navigationTitle("Add category")
     }
     
     private func addItem() {
@@ -45,6 +57,8 @@ struct AddCategoryView: View {
 
 struct AddCategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        AddCategoryView()
+        NavigationView {
+            AddCategoryView()
+        }
     }
 }
