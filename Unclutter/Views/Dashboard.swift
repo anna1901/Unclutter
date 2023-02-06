@@ -65,7 +65,7 @@ struct Dashboard: View {
                     categoryButton(
                         label: category.name ?? "Default",
                         counter: category.items?.count ?? 0,
-                        color: !colors.isEmpty ? colors[(categories.firstIndex(of: category) ?? 0) % colors.count] : .mint)
+                        color: !colors.isEmpty ? colors[(categories.firstIndex(of: category) ?? 0) % colors.count] : .theme.accent)
                 }
             })
         }
@@ -97,7 +97,7 @@ struct Dashboard: View {
                 categoryListRow(
                     label: category.name ?? "Default",
                     counter: category.items?.count ?? 0,
-                    color: !colors.isEmpty ? colors[(categories.firstIndex(of: category) ?? 0) % colors.count] : .mint)
+                    color: !colors.isEmpty ? colors[(categories.firstIndex(of: category) ?? 0) % colors.count] : .theme.accent)
             }
         }
         .listStyle(.inset)
@@ -121,7 +121,7 @@ struct Dashboard: View {
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 10)
-                .stroke(.mint, lineWidth: 2)
+                .stroke(Color.theme.accent, lineWidth: 2)
         }
     }
     
@@ -134,7 +134,7 @@ struct Dashboard: View {
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 10)
-                .stroke(.mint, lineWidth: 2)
+                .stroke(Color.theme.accent, lineWidth: 2)
         }
     }
     
@@ -158,7 +158,7 @@ struct Dashboard: View {
                 .background {
                     Circle()
                         .frame(width: 60, height: 60)
-                        .foregroundColor(.mint)
+                        .foregroundColor(Color.theme.accent)
                 }
         })
     }

@@ -17,7 +17,7 @@ struct AddCategoryView: View {
             TextField("Name", text: $name)
                 .padding()
                 .font(.headline)
-                .background(Color(hue: 0.519, saturation: 0.0, brightness: 0.932))
+                .background(Color.theme.textfieldBackground)
                 .cornerRadius(10)
             Button("Save") {
                 addItem()
@@ -27,7 +27,7 @@ struct AddCategoryView: View {
             .foregroundColor(.white)
             .frame(height: 55)
             .frame(maxWidth: .infinity)
-            .background(Color(hue: 0.893, saturation: 1.0, brightness: 0.712))
+            .background(Color.theme.accent)
             .cornerRadius(10)
             Spacer()
         }

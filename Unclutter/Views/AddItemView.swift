@@ -22,19 +22,19 @@ struct AddItemView: View {
             TextField("Name", text: $name)
                 .padding()
                 .font(.headline)
-                .background(Color(hue: 0.519, saturation: 0.0, brightness: 0.932))
+                .background(Color.theme.textfieldBackground)
                 .cornerRadius(10)
             TextField("Price", text: $price)
                 .keyboardType(.decimalPad)
                 .padding()
                 .font(.headline)
-                .background(Color(hue: 0.519, saturation: 0.0, brightness: 0.932))
+                .background(Color.theme.textfieldBackground)
                 .cornerRadius(10)
             if showNewCategoryField {
                 TextField("Category", text: $category)
                     .padding()
                     .font(.headline)
-                    .background(Color(hue: 0.519, saturation: 0.0, brightness: 0.932))
+                    .background(Color.theme.textfieldBackground)
                     .cornerRadius(10)
                 if !categories.isEmpty { Button("Select existing category") { showNewCategoryField = false } }
             } else {
@@ -45,7 +45,7 @@ struct AddItemView: View {
                 })
                 .pickerStyle(.wheel)
                 .font(.headline)
-                .background(Color(hue: 0.519, saturation: 0.0, brightness: 0.932))
+                .background(Color.theme.textfieldBackground)
                 .cornerRadius(10)
                 Button("New category") { showNewCategoryField = true }
             }
@@ -58,7 +58,7 @@ struct AddItemView: View {
                     .foregroundColor(.white)
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
-                    .background(Color(hue: 0.893, saturation: 1.0, brightness: 0.712))
+                    .background(Color.theme.accent)
                     .cornerRadius(10)
             })
             Spacer()
