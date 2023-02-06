@@ -33,11 +33,11 @@ struct Dashboard: View {
             }
             .padding(.horizontal, 20)
             .padding(.top, 20)
-            .sheet(isPresented: $addCategoryIsPresented, content: {
-                AddCategoryView()
-            })
             .background() {
                 NavigationLink(isActive: $addItemIsPresented, destination: { AddItemView() }, label: {})
+                NavigationLink(isActive: $addCategoryIsPresented, destination: { AddCategoryView() }, label: {})
+                Color.theme.background
+                    .ignoresSafeArea()
             }
             .navigationTitle("Unclutter")
         }
