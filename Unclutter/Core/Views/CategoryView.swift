@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct CategoryView: View {
     @ObservedObject var vm: CategoryViewModel

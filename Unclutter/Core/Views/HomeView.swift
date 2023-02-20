@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var vm = HomeViewModel()
     
-    @State var addCategoryIsPresented = false
     @State var addItemIsPresented = false
     @State var categoryViewIsPresent = false
     
@@ -27,7 +26,6 @@ struct HomeView: View {
             .padding(.top, 20)
             .background() {
                 NavigationLink(isActive: $addItemIsPresented, destination: { AddItemView(vm: vm) }, label: {})
-                NavigationLink(isActive: $addCategoryIsPresented, destination: { AddCategoryView() }, label: {})
                 Color.theme.background
                     .ignoresSafeArea()
             }
@@ -45,7 +43,6 @@ struct HomeView: View {
     
     private var categoriesContainer: some View {
         VStack {
-            addCategoryButton
             categoriesGrid
         }
     }
@@ -127,15 +124,6 @@ struct HomeView: View {
         .background {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.theme.accent, lineWidth: 2)
-        }
-    }
-    
-    private var addCategoryButton: some View {
-        HStack {
-            Spacer()
-            Button("Add category") {
-                addCategoryIsPresented = true
-            }
         }
     }
     
