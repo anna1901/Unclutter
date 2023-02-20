@@ -13,8 +13,7 @@ struct UnclutterApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Dashboard()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            HomeView()
         }
     }
 }

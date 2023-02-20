@@ -10,20 +10,18 @@ import CoreData
 
 struct CategoryView: View {
     @ObservedObject var vm: CategoryViewModel
-    private let name: String
     
-    init(name: String, context: NSManagedObjectContext) {
-        self.vm = CategoryViewModel(name: name, context: context)
-        self.name = name
+    init(category: CategoryModel) {
+        self.vm = CategoryViewModel(category: category)
     }
     
     var body: some View {
         List {
             ForEach(vm.items) { item in
                 HStack {
-                    Text(item.name ?? "No name")
+                    Text(item.name)
                     Spacer()
-                    Text(item.timestamp!, formatter: itemFormatter)
+                    Text(item.soldAt, formatter: itemFormatter)
                 }
                 .padding(.vertical)
             }
@@ -31,7 +29,7 @@ struct CategoryView: View {
         }
         .listRowSeparator(.hidden)
         .listStyle(.plain)
-        .navigationTitle(name)
+        .navigationTitle(vm.categoryName)
     }
     
     private let itemFormatter: DateFormatter = {
@@ -42,10 +40,10 @@ struct CategoryView: View {
     }()
 }
 
-struct CategoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            CategoryView(name: "Category 0", context: PersistenceController.preview.container.viewContext)
-        }
-    }
-}
+//struct CategoryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            CategoryView(name: "Category 0")
+//        }
+//    }
+//}

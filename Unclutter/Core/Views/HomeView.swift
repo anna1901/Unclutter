@@ -6,17 +6,9 @@
 //
 
 import SwiftUI
-import CoreData
 
-struct Dashboard: View {
-    private var colors: [Color] = [.cyan, .indigo, .purple, .mint, .blue]
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @FetchRequest<Category>(sortDescriptors: [.init(key: "createdAt", ascending: false)]) var categories
-    
-    @FetchRequest<Item>(sortDescriptors: [.init(key: "timestamp", ascending: true)]) var items
-    
+struct HomeView: View {
+    @StateObject var vm = HomeViewModel()
     
     @State var addCategoryIsPresented = false
     @State var addItemIsPresented = false
@@ -34,7 +26,7 @@ struct Dashboard: View {
             .padding(.horizontal, 20)
             .padding(.top, 20)
             .background() {
-                NavigationLink(isActive: $addItemIsPresented, destination: { AddItemView() }, label: {})
+                NavigationLink(isActive: $addItemIsPresented, destination: { AddItemView(vm: vm) }, label: {})
                 NavigationLink(isActive: $addCategoryIsPresented, destination: { AddCategoryView() }, label: {})
                 Color.theme.background
                     .ignoresSafeArea()
@@ -61,22 +53,22 @@ struct Dashboard: View {
     private var categoriesGrid: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20, content: {
-                ForEach(categories) { category in
+                ForEach(vm.categories) { category in
                     categoryButton(
-                        label: category.name ?? "Default",
-                        counter: category.items?.count ?? 0,
-                        color: !colors.isEmpty ? colors[(categories.firstIndex(of: category) ?? 0) % colors.count] : .theme.accent)
+                        category: category,
+                        counter: category.itemsCount,
+                        color: Color.theme.accent)
                 }
             })
         }
     }
     
-    private func categoryButton(label: String, counter: Int, color: Color) -> some View {
+    private func categoryButton(category: CategoryModel, counter: Int, color: Color) -> some View {
         NavigationLink {
-            CategoryView(name: label, context: viewContext)
+            CategoryView(category: category)
         } label: {
             VStack {
-                Text(label)
+                Text(category.name)
                     .font(.headline)
                     .scaledToFill()
                 Spacer()
@@ -91,32 +83,32 @@ struct Dashboard: View {
         .cornerRadius(10)
     }
     
-    private var categoriesList: some View {
-        List {
-            ForEach(categories) { category in
-                categoryListRow(
-                    label: category.name ?? "Default",
-                    counter: category.items?.count ?? 0,
-                    color: !colors.isEmpty ? colors[(categories.firstIndex(of: category) ?? 0) % colors.count] : .theme.accent)
-            }
-        }
-        .listStyle(.inset)
-    }
-    
-    private func categoryListRow(label: String, counter: Int, color: Color) -> some View {
-        HStack {
-            Text(label)
-                .font(.headline)
-            Spacer()
-            Text("\(counter)")
-        }
-    }
+//    private var categoriesList: some View {
+//        List {
+//            ForEach(vm.categories) { category in
+//                categoryListRow(
+//                    label: category.name,
+//                    counter: category.itemsCount,
+//                    color: Color.theme.accent)
+//            }
+//        }
+//        .listStyle(.inset)
+//    }
+//
+//    private func categoryListRow(label: String, counter: Int, color: Color) -> some View {
+//        HStack {
+//            Text(label)
+//                .font(.headline)
+//            Spacer()
+//            Text("\(counter)")
+//        }
+//    }
     
     private var totalLabel: some View {
         HStack {
             Text("Total items:")
             Spacer()
-            Text("\(items.count)")
+            Text("\(vm.itemsCount)")
         }
         .padding()
         .background {
@@ -129,7 +121,7 @@ struct Dashboard: View {
         HStack {
             Text("Earned:")
             Spacer()
-            Text(String(format: "%.2f", items.map(\.price).reduce(0, +)))
+            Text(String(format: "%.2f", vm.soldItemsPrice))
         }
         .padding()
         .background {
@@ -164,10 +156,8 @@ struct Dashboard: View {
     }
 }
 
-struct Dashboard_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        let persistance = PersistenceController.preview
-        Dashboard()
-            .environment(\.managedObjectContext, persistance.container.viewContext)
+        HomeView()
     }
 }
