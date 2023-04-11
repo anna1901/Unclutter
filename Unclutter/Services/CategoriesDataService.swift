@@ -17,6 +17,10 @@ class CategoriesDataService: ObservableObject {
         loadCategories()
     }
     
+    func refresh() {
+        loadCategories()
+    }
+    
     func addItem(name: String, price: String, categoryName: String) {
         let context = persistenceController.container.viewContext
         context.perform {
@@ -24,6 +28,7 @@ class CategoriesDataService: ObservableObject {
             newItem.name = name
             newItem.price = Double(price) ?? 0
             newItem.timestamp = Date()
+            newItem.uuid = UUID()
             
             if let selectedCategory = self.categories.first(where: { $0.name == categoryName }) {
                 newItem.category = selectedCategory

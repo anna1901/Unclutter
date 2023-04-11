@@ -16,7 +16,7 @@ struct CategoryView: View {
                 HStack {
                     Text(item.name)
                     Spacer()
-                    Text(item.soldAt, formatter: itemFormatter)
+                    Text(item.soldAt, style: .date)
                 }
                 .padding(.vertical)
             }
@@ -26,13 +26,6 @@ struct CategoryView: View {
         .listStyle(.plain)
         .navigationTitle(vm.categoryName)
     }
-    
-    private let itemFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .medium
-        return formatter
-    }()
 }
 
 struct CategoryView_Previews: PreviewProvider {

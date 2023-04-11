@@ -25,6 +25,7 @@ struct PersistenceController {
                 newItem.price = 20
                 newItem.timestamp = Date()
                 newItem.category = newCategory
+                newItem.uuid = UUID()
             }
         }
         

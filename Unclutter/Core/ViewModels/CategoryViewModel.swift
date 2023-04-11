@@ -25,7 +25,7 @@ class CategoryViewModel: ObservableObject {
     
     func deleteItems(offsets: IndexSet) {
         offsets.map { items[$0] }.forEach({
-            // delete logic
+            dataService.deleteItem(with: $0.id)
             print("Deleted item: \($0)")
         })
     }
@@ -34,8 +34,8 @@ class CategoryViewModel: ObservableObject {
         dataService.$items
             .map { items in
                 items.compactMap { item -> ItemModel? in
-                    guard let name = item.name, let date = item.timestamp else { return nil }
-                    return ItemModel(name: name, price: item.price, soldAt: date)
+                    guard let uuid = item.uuid, let name = item.name, let date = item.timestamp else { return nil }
+                    return ItemModel(id: uuid, name: name, price: item.price, soldAt: date)
                 }
             }
             .sink { [weak self] items in

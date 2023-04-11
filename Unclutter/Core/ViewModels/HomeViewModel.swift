@@ -29,6 +29,10 @@ class HomeViewModel: ObservableObject {
         dataService.addItem(name: name, price: price, categoryName: categoryName)
     }
     
+    func refresh() {
+        dataService.refresh()
+    }
+    
     private func addSubscribers() {
         dataService.$categories
             .map { categories -> [CategoryModel] in

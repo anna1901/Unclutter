@@ -29,6 +29,9 @@ struct HomeView: View {
                     .ignoresSafeArea()
             }
             .navigationTitle("Unclutter")
+            .onAppear {
+                vm.refresh()
+            }
         }
     }
     

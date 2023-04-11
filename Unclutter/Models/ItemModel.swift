@@ -8,7 +8,7 @@
 import Foundation
 
 struct ItemModel: Identifiable {
-    let id = UUID().uuidString
+    let id: UUID
     let name: String
     let price: Double
     let soldAt: Date
