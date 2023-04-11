@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct CategoryView: View {
-    @ObservedObject var vm: CategoryViewModel
-    
-    init(category: CategoryModel) {
-        self.vm = CategoryViewModel(category: category)
-    }
+    @StateObject var vm: CategoryViewModel
     
     var body: some View {
         List {
@@ -39,10 +35,10 @@ struct CategoryView: View {
     }()
 }
 
-//struct CategoryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            CategoryView(name: "Category 0")
-//        }
-//    }
-//}
+struct CategoryView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            CategoryView(vm: dev.categoryVM)
+        }
+    }
+}

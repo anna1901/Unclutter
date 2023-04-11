@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct UnclutterApp: App {
-    let persistenceController = PersistenceController.shared
+    @StateObject var vm: HomeViewModel = HomeViewModel()
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView(vm: vm)
         }
     }
 }

@@ -16,10 +16,10 @@ class CategoryViewModel: ObservableObject {
     private let dataService: CategoryItemsDataService
     private var cancellables = Set<AnyCancellable>()
     
-    init(category: CategoryModel) {
+    init(category: CategoryModel, preview: Bool = false) {
         self.category = category
         categoryName = category.name
-        dataService = CategoryItemsDataService(category: category)
+        dataService = CategoryItemsDataService(category: category, persistence: preview ? PersistenceController.preview : PersistenceController.shared)
         addSubscribers()
     }
     

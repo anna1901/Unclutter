@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var vm = HomeViewModel()
-    
+    @ObservedObject var vm: HomeViewModel
     @State var addItemIsPresented = false
     @State var categoryViewIsPresent = false
     
@@ -43,63 +42,9 @@ struct HomeView: View {
     
     private var categoriesContainer: some View {
         VStack {
-            categoriesGrid
+            CategoriesList(categories: vm.categories)
         }
     }
-    
-    private var categoriesGrid: some View {
-        ScrollView {
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20, content: {
-                ForEach(vm.categories) { category in
-                    categoryButton(
-                        category: category,
-                        counter: category.itemsCount,
-                        color: Color.theme.accent)
-                }
-            })
-        }
-    }
-    
-    private func categoryButton(category: CategoryModel, counter: Int, color: Color) -> some View {
-        NavigationLink {
-            CategoryView(category: category)
-        } label: {
-            VStack {
-                Text(category.name)
-                    .font(.headline)
-                    .scaledToFill()
-                Spacer()
-                Text("\(counter)")
-                    .font(.headline)
-            }
-            .foregroundColor(.white)
-            .padding(20)
-        }
-        .frame(maxWidth: 160)
-        .background(color)
-        .cornerRadius(10)
-    }
-    
-//    private var categoriesList: some View {
-//        List {
-//            ForEach(vm.categories) { category in
-//                categoryListRow(
-//                    label: category.name,
-//                    counter: category.itemsCount,
-//                    color: Color.theme.accent)
-//            }
-//        }
-//        .listStyle(.inset)
-//    }
-//
-//    private func categoryListRow(label: String, counter: Int, color: Color) -> some View {
-//        HStack {
-//            Text(label)
-//                .font(.headline)
-//            Spacer()
-//            Text("\(counter)")
-//        }
-//    }
     
     private var totalLabel: some View {
         HStack {
@@ -141,11 +86,15 @@ struct HomeView: View {
                         .foregroundColor(Color.theme.accent)
                 }
         })
+        .shadow(
+            color: .theme.accent,
+            radius: 5, x: 0, y: 0
+        )
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(vm: dev.homeVM)
     }
 }

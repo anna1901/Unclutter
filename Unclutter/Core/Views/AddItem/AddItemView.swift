@@ -39,7 +39,10 @@ struct AddItemView: View {
                     .font(.headline)
                     .background(Color.theme.textfieldBackground)
                     .cornerRadius(10)
-                if !vm.categories.isEmpty { Button("Select existing category") { showNewCategoryField = false } }
+                if !vm.categories.isEmpty {
+                    Button("Select existing category") {
+                        showNewCategoryField = false }
+                }
             } else {
                 Picker("Category", selection: $category, content: {
                     ForEach(vm.categories.map(\.name), id: \.self) {
@@ -51,7 +54,10 @@ struct AddItemView: View {
                 .background(Color.theme.textfieldBackground)
                 .foregroundColor(Color.theme.background)
                 .cornerRadius(10)
-                Button("New category") { showNewCategoryField = true }.foregroundColor(Color.theme.accent)
+                Button("New category") {
+                    showNewCategoryField = true
+                    category = ""
+                }.foregroundColor(Color.theme.accent)
             }
             Button(action: {
                 addItem()
@@ -82,9 +88,9 @@ struct AddItemView: View {
         }
     }
 }
-//
-//struct AddItemView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddItemView()
-//    }
-//}
+
+struct AddItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddItemView(vm: dev.homeVM)
+    }
+}

@@ -10,9 +10,10 @@ import CoreData
 
 class CategoriesDataService: ObservableObject {
     @Published var categories: [Category] = []
-    private let persistenceController = PersistenceController.shared
+    private let persistenceController: PersistenceController
     
-    init() {
+    init(persistence: PersistenceController) {
+        self.persistenceController = persistence
         loadCategories()
     }
     

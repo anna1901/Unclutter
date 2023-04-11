@@ -13,10 +13,15 @@ class HomeViewModel: ObservableObject {
     @Published var itemsCount: Int = 0
     @Published var soldItemsPrice: Double = 0
     
-    private let dataService = CategoriesDataService()
+    private let dataService: CategoriesDataService
     private var cancellables = Set<AnyCancellable>()
     
-    init() {
+    init(preview: Bool = false) {
+        if preview {
+            dataService = CategoriesDataService(persistence: PersistenceController.preview)
+        } else {
+            dataService = CategoriesDataService(persistence: PersistenceController.shared)
+        }
         addSubscribers()
     }
     
