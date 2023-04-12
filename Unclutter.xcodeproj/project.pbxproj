@@ -20,6 +20,11 @@
 		33DD589E29E6CAC3001F7B67 /* XMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD589D29E6CAC3001F7B67 /* XMarkButton.swift */; };
 		33DD58A129E6E060001F7B67 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD58A029E6E060001F7B67 /* Settings.swift */; };
 		33DD58A329E6ED42001F7B67 /* FormHiddenBackfround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD58A229E6ED42001F7B67 /* FormHiddenBackfround.swift */; };
+		33DD58A929E6FB9B001F7B67 /* Screenshot4.png in Resources */ = {isa = PBXBuildFile; fileRef = 33DD58A529E6FB9B001F7B67 /* Screenshot4.png */; };
+		33DD58AA29E6FB9B001F7B67 /* Screenshot2.png in Resources */ = {isa = PBXBuildFile; fileRef = 33DD58A629E6FB9B001F7B67 /* Screenshot2.png */; };
+		33DD58AB29E6FB9B001F7B67 /* Screenshot1.png in Resources */ = {isa = PBXBuildFile; fileRef = 33DD58A729E6FB9B001F7B67 /* Screenshot1.png */; };
+		33DD58AC29E6FB9B001F7B67 /* Screenshot3.png in Resources */ = {isa = PBXBuildFile; fileRef = 33DD58A829E6FB9B001F7B67 /* Screenshot3.png */; };
+		33DD58AE29E6FBF8001F7B67 /* Screenshot5.png in Resources */ = {isa = PBXBuildFile; fileRef = 33DD58AD29E6FBF8001F7B67 /* Screenshot5.png */; };
 		33E25354287B22EE00C52805 /* UnclutterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E25353287B22EE00C52805 /* UnclutterApp.swift */; };
 		33E25358287B22F100C52805 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33E25357287B22F100C52805 /* Assets.xcassets */; };
 		33E2535B287B22F100C52805 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33E2535A287B22F100C52805 /* Preview Assets.xcassets */; };
@@ -43,6 +48,11 @@
 		33DD589D29E6CAC3001F7B67 /* XMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarkButton.swift; sourceTree = "<group>"; };
 		33DD58A029E6E060001F7B67 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		33DD58A229E6ED42001F7B67 /* FormHiddenBackfround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormHiddenBackfround.swift; sourceTree = "<group>"; };
+		33DD58A529E6FB9B001F7B67 /* Screenshot4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot4.png; sourceTree = "<group>"; };
+		33DD58A629E6FB9B001F7B67 /* Screenshot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot2.png; sourceTree = "<group>"; };
+		33DD58A729E6FB9B001F7B67 /* Screenshot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot1.png; sourceTree = "<group>"; };
+		33DD58A829E6FB9B001F7B67 /* Screenshot3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot3.png; sourceTree = "<group>"; };
+		33DD58AD29E6FBF8001F7B67 /* Screenshot5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot5.png; sourceTree = "<group>"; };
 		33E25350287B22EE00C52805 /* Unclutter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unclutter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33E25353287B22EE00C52805 /* UnclutterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnclutterApp.swift; sourceTree = "<group>"; };
 		33E25357287B22F100C52805 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -161,6 +171,18 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		33DD58A429E6FB76001F7B67 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				33DD58A729E6FB9B001F7B67 /* Screenshot1.png */,
+				33DD58A629E6FB9B001F7B67 /* Screenshot2.png */,
+				33DD58A829E6FB9B001F7B67 /* Screenshot3.png */,
+				33DD58A529E6FB9B001F7B67 /* Screenshot4.png */,
+				33DD58AD29E6FBF8001F7B67 /* Screenshot5.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 		33E25347287B22EE00C52805 = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +209,7 @@
 				33C93C6229A3961400794896 /* Controllers */,
 				33C93C6329A3962000794896 /* Models */,
 				33E25357287B22F100C52805 /* Assets.xcassets */,
+				33DD58A429E6FB76001F7B67 /* Screenshots */,
 				33E25359287B22F100C52805 /* Preview Content */,
 			);
 			path = Unclutter;
@@ -269,8 +292,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33DD58AA29E6FB9B001F7B67 /* Screenshot2.png in Resources */,
 				33E2535B287B22F100C52805 /* Preview Assets.xcassets in Resources */,
 				33E25358287B22F100C52805 /* Assets.xcassets in Resources */,
+				33DD58AE29E6FBF8001F7B67 /* Screenshot5.png in Resources */,
+				33DD58AB29E6FB9B001F7B67 /* Screenshot1.png in Resources */,
+				33DD58A929E6FB9B001F7B67 /* Screenshot4.png in Resources */,
+				33DD58AC29E6FB9B001F7B67 /* Screenshot3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
