@@ -39,6 +39,10 @@ class HomeViewModel: ObservableObject {
         completion()
     }
     
+    func addCategory(name: String) {
+        dataService.addCategory(name: name)
+    }
+    
     func refresh() {
         dataService.refresh()
     }
@@ -46,6 +50,13 @@ class HomeViewModel: ObservableObject {
     func addItemViewDismissed() {
         categoryInvalid = false
         nameInvalid = false
+    }
+    
+    func removeCategory(atOffsets offsets: IndexSet) {
+        offsets.map { categories[$0] }.forEach({
+            dataService.deleteCategory(with: $0.name)
+            print("Deleted category: \($0)")
+        })
     }
         
     private func addSubscribers() {

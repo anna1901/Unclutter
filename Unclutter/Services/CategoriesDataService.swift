@@ -48,6 +48,38 @@ class CategoriesDataService: ObservableObject {
         }
     }
     
+    func addCategory(name: String) {
+        let context = persistenceController.container.viewContext
+        context.perform {
+            let newCategory = Category(context: context)
+            newCategory.name = name.isEmpty ? "New category" : name
+            newCategory.createdAt = Date()
+            
+            do {
+                try context.save()
+                self.loadCategories()
+            } catch {
+                print("Error when adding new item: \(error)")
+            }
+        }
+    }
+    
+    func deleteCategory(with name: String) {
+        let context = persistenceController.container.viewContext
+        let request = NSFetchRequest<Category>(entityName: "Category")
+        let predicate = NSPredicate(format: "name = %@", name)
+        request.predicate = predicate
+        do {
+            categories = try context.fetch(request)
+            print("Loaded categories: \(categories)")
+            categories.forEach(context.delete(_:))
+            try context.save()
+            loadCategories()
+        } catch {
+            print("Failed to delete categories: \(error)")
+        }
+    }
+    
     private func loadCategories() {
         let request = NSFetchRequest<Category>(entityName: "Category")
         

@@ -12,7 +12,6 @@ struct HomeView: View {
     @State var addItemIsPresented = false
     @State var categoryViewIsPresent = false
     
-    
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -33,6 +32,16 @@ struct HomeView: View {
                     .ignoresSafeArea()
             }
             .navigationTitle("Unclutter")
+            .toolbar {
+                ToolbarItem {
+                    NavigationLink {
+                        Settings(vm: vm)
+                    } label: {
+                        Image(systemName: "gearshape")
+                            .font(.headline)
+                    }
+                }
+            }
             .onAppear {
                 vm.refresh()
             }

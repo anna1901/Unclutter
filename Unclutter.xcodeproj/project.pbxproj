@@ -18,6 +18,7 @@
 		33DD589629E59C2D001F7B67 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD589529E59C2D001F7B67 /* PreviewProvider.swift */; };
 		33DD589B29E59D57001F7B67 /* CategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD589A29E59D57001F7B67 /* CategoriesList.swift */; };
 		33DD589E29E6CAC3001F7B67 /* XMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD589D29E6CAC3001F7B67 /* XMarkButton.swift */; };
+		33DD58A129E6E060001F7B67 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD58A029E6E060001F7B67 /* Settings.swift */; };
 		33E25354287B22EE00C52805 /* UnclutterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E25353287B22EE00C52805 /* UnclutterApp.swift */; };
 		33E25358287B22F100C52805 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33E25357287B22F100C52805 /* Assets.xcassets */; };
 		33E2535B287B22F100C52805 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33E2535A287B22F100C52805 /* Preview Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		33DD589529E59C2D001F7B67 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		33DD589A29E59D57001F7B67 /* CategoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesList.swift; sourceTree = "<group>"; };
 		33DD589D29E6CAC3001F7B67 /* XMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarkButton.swift; sourceTree = "<group>"; };
+		33DD58A029E6E060001F7B67 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		33E25350287B22EE00C52805 /* Unclutter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unclutter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33E25353287B22EE00C52805 /* UnclutterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnclutterApp.swift; sourceTree = "<group>"; };
 		33E25357287B22F100C52805 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,6 +150,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		33DD589F29E6E036001F7B67 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				33DD58A029E6E060001F7B67 /* Settings.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		33E25347287B22EE00C52805 = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +203,7 @@
 				33DD589729E59D1B001F7B67 /* Home */,
 				33DD589829E59D2C001F7B67 /* AddItem */,
 				33DD589929E59D3F001F7B67 /* CategoryView */,
+				33DD589F29E6E036001F7B67 /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -270,6 +281,7 @@
 				33DD589B29E59D57001F7B67 /* CategoriesList.swift in Sources */,
 				330DBF962982A77800099BD6 /* CategoryView.swift in Sources */,
 				33C93C6B29A3A09700794896 /* ItemModel.swift in Sources */,
+				33DD58A129E6E060001F7B67 /* Settings.swift in Sources */,
 				33C93C6129A3956800794896 /* CategoriesDataService.swift in Sources */,
 				33E25360287B22F100C52805 /* Unclutter.xcdatamodeld in Sources */,
 				33E2536E287CB6AC00C52805 /* AddItemView.swift in Sources */,
