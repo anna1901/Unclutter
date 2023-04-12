@@ -12,6 +12,8 @@ struct HomeView: View {
     @State var addItemIsPresented = false
     @State var categoryViewIsPresent = false
     
+    private let currencyCode = "USD"
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -88,7 +90,7 @@ struct HomeView: View {
         HStack {
             Text("Earned:")
             Spacer()
-            Text(String(format: "%.2f", vm.soldItemsPrice))
+            Text(vm.soldItemsPrice, format: .currency(code: currencyCode))
         }
         .padding()
         .background {
