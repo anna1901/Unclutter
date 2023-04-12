@@ -58,7 +58,16 @@ struct HomeView: View {
     
     private var categoriesContainer: some View {
         VStack {
-            CategoriesList(categories: vm.categories)
+            if vm.categories.isEmpty {
+                Spacer()
+                Text("Add first item that you successfully uncluttered!")
+                    .padding()
+                    .multilineTextAlignment(.center)
+                    .font(.title2)
+                    .foregroundColor(Color.theme.accent)
+            } else {
+                CategoriesList(categories: vm.categories)
+            }
         }
     }
     
