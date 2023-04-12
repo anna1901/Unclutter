@@ -39,6 +39,11 @@ struct Settings: View {
                 }
             }
         }
+        .modifier(FormHiddenBackground())
+        .background() {
+            Color.theme.background
+                .ignoresSafeArea()
+        }
         .navigationTitle("Settings")
     }
 }

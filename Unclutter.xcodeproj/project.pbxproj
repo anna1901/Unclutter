@@ -19,6 +19,7 @@
 		33DD589B29E59D57001F7B67 /* CategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD589A29E59D57001F7B67 /* CategoriesList.swift */; };
 		33DD589E29E6CAC3001F7B67 /* XMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD589D29E6CAC3001F7B67 /* XMarkButton.swift */; };
 		33DD58A129E6E060001F7B67 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD58A029E6E060001F7B67 /* Settings.swift */; };
+		33DD58A329E6ED42001F7B67 /* FormHiddenBackfround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD58A229E6ED42001F7B67 /* FormHiddenBackfround.swift */; };
 		33E25354287B22EE00C52805 /* UnclutterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E25353287B22EE00C52805 /* UnclutterApp.swift */; };
 		33E25358287B22F100C52805 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33E25357287B22F100C52805 /* Assets.xcassets */; };
 		33E2535B287B22F100C52805 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33E2535A287B22F100C52805 /* Preview Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		33DD589A29E59D57001F7B67 /* CategoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesList.swift; sourceTree = "<group>"; };
 		33DD589D29E6CAC3001F7B67 /* XMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarkButton.swift; sourceTree = "<group>"; };
 		33DD58A029E6E060001F7B67 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		33DD58A229E6ED42001F7B67 /* FormHiddenBackfround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormHiddenBackfround.swift; sourceTree = "<group>"; };
 		33E25350287B22EE00C52805 /* Unclutter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unclutter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33E25353287B22EE00C52805 /* UnclutterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnclutterApp.swift; sourceTree = "<group>"; };
 		33E25357287B22F100C52805 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				33DD589D29E6CAC3001F7B67 /* XMarkButton.swift */,
+				33DD58A229E6ED42001F7B67 /* FormHiddenBackfround.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				33E25354287B22EE00C52805 /* UnclutterApp.swift in Sources */,
 				3323AC62299166D400FE623C /* Color.swift in Sources */,
 				33C93C6D29A3AE0E00794896 /* CategoryItemsDataService.swift in Sources */,
+				33DD58A329E6ED42001F7B67 /* FormHiddenBackfround.swift in Sources */,
 				33C93C6529A39F7B00794896 /* CategoryModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
