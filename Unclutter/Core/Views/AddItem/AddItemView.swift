@@ -22,34 +22,14 @@ struct AddItemView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            TextField("Name", text: $name)
-                .padding()
-                .font(.headline)
-                .background(Color.theme.textfieldBackground)
-                .cornerRadius(10)
-            TextField("Price", text: $price)
-                .keyboardType(.decimalPad)
-                .padding()
-                .font(.headline)
-                .background(Color.theme.textfieldBackground)
-                .cornerRadius(10)
+            nameTextField
+            priceTextField
             if showNewCategoryField {
                 newCategoryField
             } else {
                 categoriesPicker
             }
-            Button(action: {
-                addItem()
-                dismiss()
-            }, label: {
-                Text("Save")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.theme.accent)
-                    .cornerRadius(10)
-            })
+            saveButton
             Spacer()
         }
         .padding()
@@ -63,22 +43,60 @@ struct AddItemView: View {
             showNewCategoryField = vm.categories.isEmpty
             category = vm.categories.first?.name ?? ""
         }
+        .onDisappear {
+            vm.addItemViewDismissed()
+        }
         .background(Color.theme.background)
     }
     
     private func addItem() {
         withAnimation {
-            vm.addItem(name: name, price: price, categoryName: category)
+            vm.addItem(name: name, price: price, categoryName: category) {
+                dismiss()
+            }
         }
     }
     
-    private var newCategoryField: some View {
-        VStack {
-            TextField("Category", text: $category)
+    private var nameTextField: some View {
+        VStack(alignment: .leading) {
+            TextField("Name", text: $name)
                 .padding()
                 .font(.headline)
                 .background(Color.theme.textfieldBackground)
             .cornerRadius(10)
+            if vm.nameInvalid {
+                Text("Name can't be empty")
+                    .font(.callout)
+                    .foregroundColor(.red)
+                    .padding(.leading, 5)
+            }
+        }
+    }
+    
+    private var priceTextField: some View {
+        TextField("Price", text: $price)
+            .keyboardType(.decimalPad)
+            .padding()
+            .font(.headline)
+            .background(Color.theme.textfieldBackground)
+            .cornerRadius(10)
+    }
+    
+    private var newCategoryField: some View {
+        VStack {
+            VStack(alignment: .leading) {
+                TextField("Category", text: $category)
+                    .padding()
+                    .font(.headline)
+                    .background(Color.theme.textfieldBackground)
+                    .cornerRadius(10)
+                if vm.categoryInvalid {
+                    Text("Category name can't be empty")
+                        .font(.callout)
+                        .foregroundColor(.red)
+                        .padding(.leading, 5)
+                }
+            }
             if !vm.categories.isEmpty {
                 Button("Select existing category") {
                     showNewCategoryField = false
@@ -109,6 +127,20 @@ struct AddItemView: View {
             .foregroundColor(Color.theme.accent)
             .padding(.top, 10)
         }
+    }
+    
+    private var saveButton: some View {
+        Button(action: {
+            addItem()
+        }, label: {
+            Text("Save")
+                .font(.headline)
+                .foregroundColor(.white)
+                .frame(height: 55)
+                .frame(maxWidth: .infinity)
+                .background(Color.theme.accent)
+                .cornerRadius(10)
+        })
     }
 }
 

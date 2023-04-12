@@ -13,6 +13,10 @@ class HomeViewModel: ObservableObject {
     @Published var itemsCount: Int = 0
     @Published var soldItemsPrice: Double = 0
     
+    @Published var nameInvalid = false
+    @Published var categoryInvalid = false
+    
+    
     private let dataService: CategoriesDataService
     private var cancellables = Set<AnyCancellable>()
     
@@ -25,14 +29,25 @@ class HomeViewModel: ObservableObject {
         addSubscribers()
     }
     
-    func addItem(name: String, price: String, categoryName: String) {
+    func addItem(name: String, price: String, categoryName: String, completion: () -> Void) {
+        guard !name.isEmpty, !categoryName.isEmpty else {
+            categoryInvalid = categoryName.isEmpty
+            nameInvalid = name.isEmpty
+            return
+        }
         dataService.addItem(name: name, price: price, categoryName: categoryName)
+        completion()
     }
     
     func refresh() {
         dataService.refresh()
     }
     
+    func addItemViewDismissed() {
+        categoryInvalid = false
+        nameInvalid = false
+    }
+        
     private func addSubscribers() {
         dataService.$categories
             .map { categories -> [CategoryModel] in
