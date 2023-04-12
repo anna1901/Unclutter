@@ -21,8 +21,8 @@ Unclutter is a modern, efficient, and user-friendly iOS application built using 
 To get started with the project, follow these steps:
 
 1. Ensure you have Xcode installed on your Mac. You can download the latest version from the Mac App Store.
-2. Clone the repository: `git clone https://github.com/your_username/ProjectName.git`
-3. Open the `.xcodeproj` or `.xcworkspace` file in Xcode.
+2. Clone the repository: `git clone https://github.com/anna1901/Unclutter.git`
+3. Open the `.xcodeproj` file in Xcode.
 4. Select a target device or simulator and click the "Run" button to build and run the project.
 
 ## Usage
