@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddItemView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     @ObservedObject private var vm: HomeViewModel
     
     @State private var name: String = ""
@@ -34,34 +34,13 @@ struct AddItemView: View {
                 .background(Color.theme.textfieldBackground)
                 .cornerRadius(10)
             if showNewCategoryField {
-                TextField("Category", text: $category)
-                    .padding()
-                    .font(.headline)
-                    .background(Color.theme.textfieldBackground)
-                    .cornerRadius(10)
-                if !vm.categories.isEmpty {
-                    Button("Select existing category") {
-                        showNewCategoryField = false }
-                }
+                newCategoryField
             } else {
-                Picker("Category", selection: $category, content: {
-                    ForEach(vm.categories.map(\.name), id: \.self) {
-                        Text($0)
-                    }
-                })
-                .pickerStyle(.wheel)
-                .font(.headline)
-                .background(Color.theme.textfieldBackground)
-                .foregroundColor(Color.theme.background)
-                .cornerRadius(10)
-                Button("New category") {
-                    showNewCategoryField = true
-                    category = ""
-                }.foregroundColor(Color.theme.accent)
+                categoriesPicker
             }
             Button(action: {
                 addItem()
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
             }, label: {
                 Text("Save")
                     .font(.headline)
@@ -75,6 +54,11 @@ struct AddItemView: View {
         }
         .padding()
         .navigationTitle("Add item")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                XMarkButton { dismiss() }
+            }
+        }
         .onAppear {
             showNewCategoryField = vm.categories.isEmpty
             category = vm.categories.first?.name ?? ""
@@ -87,10 +71,51 @@ struct AddItemView: View {
             vm.addItem(name: name, price: price, categoryName: category)
         }
     }
+    
+    private var newCategoryField: some View {
+        VStack {
+            TextField("Category", text: $category)
+                .padding()
+                .font(.headline)
+                .background(Color.theme.textfieldBackground)
+            .cornerRadius(10)
+            if !vm.categories.isEmpty {
+                Button("Select existing category") {
+                    showNewCategoryField = false
+                }
+                .padding(.top, 10)
+            }
+        }
+    }
+    
+    private var categoriesPicker: some View {
+        VStack {
+            Picker("Category", selection: $category, content: {
+                ForEach(vm.categories.map(\.name), id: \.self) {
+                    Text($0)
+                }
+            })
+            .pickerStyle(.wheel)
+            .font(.headline)
+            .background(Color.theme.textfieldBackground)
+            .foregroundColor(Color.theme.background)
+            .cornerRadius(10)
+            .frame(height: 100)
+            
+            Button("New category") {
+                showNewCategoryField = true
+                category = ""
+            }
+            .foregroundColor(Color.theme.accent)
+            .padding(.top, 10)
+        }
+    }
 }
 
 struct AddItemView_Previews: PreviewProvider {
     static var previews: some View {
-        AddItemView(vm: dev.homeVM)
+        NavigationView {
+            AddItemView(vm: dev.homeVM)
+        }
     }
 }

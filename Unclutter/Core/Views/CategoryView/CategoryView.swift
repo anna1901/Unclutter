@@ -19,12 +19,17 @@ struct CategoryView: View {
                     Text(item.soldAt, style: .date)
                 }
                 .padding(.vertical)
+                .listRowBackground(Color.theme.background)
             }
             .onDelete(perform: vm.deleteItems)
         }
         .listRowSeparator(.hidden)
         .listStyle(.plain)
         .navigationTitle(vm.categoryName)
+        .background() {
+            Color.theme.background
+                .ignoresSafeArea()
+        }
     }
 }
 

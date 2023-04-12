@@ -21,10 +21,14 @@ struct HomeView: View {
                 addItemButton
                     .padding()
             }
+            .sheet(isPresented: $addItemIsPresented, content: {
+                NavigationView {
+                    AddItemView(vm: vm)
+                }
+            })
             .padding(.horizontal, 20)
             .padding(.top, 20)
             .background() {
-                NavigationLink(isActive: $addItemIsPresented, destination: { AddItemView(vm: vm) }, label: {})
                 Color.theme.background
                     .ignoresSafeArea()
             }
